@@ -14,7 +14,7 @@ int colMoves[]={-1,1,0,0,-1,1,1,-1};
 
 
 //find given word in dictionary
-bool inDictionary(vector<string> dictionary,string word)
+bool inDictionary(vector<string> &dictionary,string word)
 {
     for(int i=0;i<dictionary.size();i++)
     {
@@ -25,7 +25,7 @@ bool inDictionary(vector<string> dictionary,string word)
 }
 
 //check if given move is possible
-bool isValidMove(int row,int col,vector<vector<bool>> visited)
+bool isValidMove(int row,int col,vector<vector<bool>> &visited)
 {
     if(row >=0 && row<m && col>=0 && col<n && !visited[row][col])
         return true;
@@ -34,7 +34,7 @@ bool isValidMove(int row,int col,vector<vector<bool>> visited)
 }
 
 //backtracking through all possible combination of words AND print if a word is present in dictionary
-void printWords(vector<vector<char>> boggle,vector<string> dictionary,vector<vector<bool>> visited,int row, int col,string word)
+void printWords(vector<vector<char>> &boggle,vector<string> &dictionary,vector<vector<bool>> &visited,int row, int col,string word)
 {
     if(inDictionary(dictionary,word))
         cout<<word<<endl;
@@ -58,7 +58,7 @@ void printWords(vector<vector<char>> boggle,vector<string> dictionary,vector<vec
 }
 
 //utility function for printWords
-void findWords(vector<vector<char>> boggle, vector<string> dictionary)
+void findWords(vector<vector<char>> &boggle, vector<string> &dictionary)
 {
     //initializing visited table with false.
     vector<vector<bool>> visited(m,vector<bool>(n,false));
