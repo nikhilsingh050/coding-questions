@@ -1,5 +1,5 @@
 //n Queen Problem:    ("problem? problem ye hai ki wo ladki hai.. aur kya problem hai.........")
-//The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens
+//The N Queen is the problem of placing N chess queens on an NÃ—N chessboard so that no two queens
 //attack each other.
 //Only one queen can be placed in each row.
 
