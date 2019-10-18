@@ -1,3 +1,5 @@
+//similar to merge sort
+
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2)
 {
     if(l1==NULL)
@@ -5,9 +7,11 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2)
     else if(l2==NULL)
         return l1;
 
+    //dummy node to hang the result to
     ListNode *head = new ListNode(0);
     ListNode *result=head;
 
+    //add till min length
     while(l1!=NULL && l2!=NULL)
     {
         if(l1->val <= l2->val)
@@ -23,6 +27,7 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2)
         head=head->next;
     }
 
+    //add remaining nodes
     if(l1==NULL)
         head->next=l2;
     else if(l2==NULL)
