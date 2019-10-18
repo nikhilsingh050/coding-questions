@@ -29,7 +29,7 @@ bool isPalindrome(ListNode* head) {
     secondHalf=prev;
 
 
-    //compare element of both the halves
+    //compare both the halves
     while(secondHalf!=NULL)
     {
         if(firstHalf->val != secondHalf->val)
