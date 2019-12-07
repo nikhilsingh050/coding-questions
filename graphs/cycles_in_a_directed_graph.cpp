@@ -56,20 +56,17 @@ public:
 //2. Using BFS(Kahn's Algorithm):
 
 class Solution {
-public:
-    
+public:    
     bool isCyclic(int n, vector<vector<int>> &graph)
     {
-        vector<int> indegree(n,0);
-        
+        vector<int> indegree(n,0);       
         for(int u=0;u<n;u++)
         {
             for(int v: graph[u])
                 indegree[v]++;
         }
         
-        queue<int> q;
-        
+        queue<int> q;        
         for(int v=0;v<n;v++)
         {
             if(indegree[v]==0)
