@@ -53,7 +53,63 @@ public:
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-//2. Using BFS:
+//2. Using BFS(Kahn's Algorithm):
+
+class Solution {
+public:
+    
+    bool isCyclic(int n, vector<vector<int>> &graph)
+    {
+        vector<int> indegree(n,0);
+        
+        for(int u=0;u<n;u++)
+        {
+            for(int v: graph[u])
+                indegree[v]++;
+        }
+        
+        queue<int> q;
+        
+        for(int v=0;v<n;v++)
+        {
+            if(indegree[v]==0)
+                q.push(v);
+        }
+        
+        int visitcount=0;
+        
+        while(!q.empty())
+        {
+            int u=q.front();
+            q.pop();
+            visitcount++;
+            
+            for(int v: graph[u])
+            {
+                indegree[v]--;
+                if(indegree[v]==0)
+                    q.push(v);
+            }
+        }
+        
+        if(visitcount!=n)
+            return true;
+        else
+            return false;
+    }
+    
+    bool canFinish(int numCourses, vector<vector<int>>& pre) {
+        
+        vector<vector<int>> graph(numCourses);
+        for(vector<int> edge: pre)
+            graph[edge[0]].push_back(edge[1]);
+        
+        if(isCyclic(numCourses,graph))
+            return false;
+        else
+            return true;
+    }
+};
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
