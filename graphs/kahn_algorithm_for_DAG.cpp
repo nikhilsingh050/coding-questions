@@ -1,3 +1,6 @@
+//Basically, we are removing edges with in-degree zero, one by one.
+//Can be used to check if a graph is cyclic or not.
+
 /*
 Steps involved in finding the topological ordering of a DAG:
 
