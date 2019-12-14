@@ -2,6 +2,7 @@
 
 
 //It uses dfs to search the weighted graph.
+//Alternate solution: Using Union find.(faster) 
 
 // How to optimize?
 // - There are a number of queries.
