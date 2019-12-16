@@ -4,9 +4,81 @@
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//1. Using DFS:
+
+//We do a DFS traversal of the given graph. For every visited vertex ‘v’,
+//if there is an adjacent ‘u’ such that u is already visited and u is not parent of v,
+//then there is a cycle in graph.
+
+//Time Complexity: O(V+E)
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+bool dfs(string v, unordered_map<string,vector<string>> &adj, unordered_set<string> &visited, string u)
+{
+    visited.insert(v);
+
+    for(auto neighbor : adj[v])
+    {
+        if(visited.find(neighbor)==visited.end())
+        {
+            if(dfs(neighbor,adj,visited,v))
+                return true;
+        }
+        else if(neighbor!=u)
+            return true;
+    }
+    return false;
+}
+
+
+int main()
+{
+    vector<vector<string>> edges = {{"A","B"},{"B","C"},{"C","D"},{"D","E"},{"E","F"},{"F","C"}};
+    int n=6;
+    unordered_map<string,vector<string>> adj;
+
+    for(auto e : edges)
+    {
+        if(adj.find(e[0])==adj.end())
+        {
+            vector<string> v;
+            adj[e[0]]=v;
+        }
+        if(adj.find(e[1])==adj.end())
+        {
+            vector<string> v;
+            adj[e[1]]=v;
+        }
+
+        adj[e[0]].push_back(e[1]);
+        adj[e[1]].push_back(e[0]);
+    }
+
+    unordered_set<string> visited;
+
+    string u = adj.begin()->first;
+
+    if(dfs(u,adj,visited,"$"))
+        cout<<"Cyclic!"<<endl;
+    else
+        cout<<"Acyclic!"<<endl;
+
+    return 0;
+}
+
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-//1. Using Disjoint-Set or Union-find:
+//2. Using Disjoint-Set or Union-find:
 
 // Algorithm:
 // 1. Create a set for each vertex.
@@ -75,77 +147,4 @@ int main()
         cout<<"Cyclic";
     else
         cout<<"Acyclic";
-}
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//2. Using DFS:
-
-//We do a DFS traversal of the given graph. For every visited vertex ‘v’,
-//if there is an adjacent ‘u’ such that u is already visited and u is not parent of v,
-//then there is a cycle in graph.
-
-//Time Complexity: O(V+E)
-
-
-#include<bits/stdc++.h>
-using namespace std;
-
-
-bool dfs(string v, unordered_map<string,vector<string>> &adj, unordered_set<string> &visited, string u)
-{
-    visited.insert(v);
-
-    for(auto neighbor : adj[v])
-    {
-        if(visited.find(neighbor)==visited.end())
-        {
-            if(dfs(neighbor,adj,visited,v))
-                return true;
-        }
-        else if(neighbor!=u)
-            return true;
-    }
-    return false;
-}
-
-
-int main()
-{
-    vector<vector<string>> edges = {{"A","B"},{"B","C"},{"C","D"},{"D","E"},{"E","F"},{"F","C"}};
-    int n=6;
-    unordered_map<string,vector<string>> adj;
-
-    for(auto e : edges)
-    {
-        if(adj.find(e[0])==adj.end())
-        {
-            vector<string> v;
-            adj[e[0]]=v;
-        }
-        if(adj.find(e[1])==adj.end())
-        {
-            vector<string> v;
-            adj[e[1]]=v;
-        }
-
-        adj[e[0]].push_back(e[1]);
-        adj[e[1]].push_back(e[0]);
-    }
-
-    unordered_set<string> visited;
-
-    string u = adj.begin()->first;
-
-    if(dfs(u,adj,visited,"$"))
-        cout<<"Cyclic!"<<endl;
-    else
-        cout<<"Acyclic!"<<endl;
-
-    return 0;
 }
