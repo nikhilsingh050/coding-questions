@@ -20,7 +20,7 @@ while(ss>>word)
 
 
 
-//3. Tokenize a string using delimitter:
+//3. Tokenize a string using a delimitter:
 string s="what-ever-lol";
 stringstream ss(s);
 string token;
@@ -48,7 +48,7 @@ int n = atoi(char*);
 
 //5. Covert string to int:
 string s = to_string(int);
-OR
+//OR
 stringstream ss;
 int x=123;
 string s;
@@ -80,24 +80,14 @@ if(str1 == str2)
 
 
 
-//10. Tokenize a string using delimitter:
-string s="what-ever-lol";
-stringstream ss(s);
-string token;
-while(getline(ss,token,'-'))
-    cout<<token;
-
-
-
-
-//11. Check number and alphabets:
+//10. Check number and alphabets:
 isalpha(char);
 isdigit(char);
 
 
 
 
-//12. Find in a string:
+//11. find() in a string:
 string s="ancd1234";
 cout<<s.find('a');          //returns index of first occurence of 'a'
 
