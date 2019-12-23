@@ -73,6 +73,17 @@ distance(first_iterator,desired_position);
 //////////////////////////////////////////////////////////////////////////////////
 
 
+//transform vector to a heap(max heap):
+//Complexity: O(n)
+make_heap(v.begin(),v.end());
+
+//heapify the heap after pushing a new element to the vector:
+//Complexity: O(logn)
+push_heap(v.begin(),v.end());
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
 //merge operation on a sorted range:
 
 //merge v1 and v2 to v3.
