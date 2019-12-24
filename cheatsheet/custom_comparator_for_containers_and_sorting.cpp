@@ -1,3 +1,5 @@
+//Custom Comparator for stl containers and sorting:
+
 //Comparator is a function that is used to compare two value.
 //STL sorted container have a comparator less<> by default which sorts them is ascending order.
 //greater<> can be used explicitly to sort a container is descending order.
