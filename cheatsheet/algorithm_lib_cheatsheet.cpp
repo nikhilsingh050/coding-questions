@@ -73,13 +73,23 @@ distance(first_iterator,desired_position);
 //////////////////////////////////////////////////////////////////////////////////
 
 
-//transform vector to a heap(max heap):
-//Complexity: O(n)
-make_heap(v.begin(),v.end());
+//NOTE: USE priority_queue to implement binary heaps.
 
-//heapify the heap after pushing a new element to the vector:
-//Complexity: O(logn)
+vector<int> v={1,2,3,4,5};
+//Build heap:
+make_heap(v.begin(),v.end());
+print_vector(v);            //Output: 5 4 3 1 2
+    
+//Insertion:
+v.push_back(100);
 push_heap(v.begin(),v.end());
+print_vector(v);            //Output: 100 4 5 1 2 3
+    
+//Deletion:
+pop_heap(v.begin(),v.end());
+print_vector(v);            //Output: 5 4 3 1 2 100
+v.pop_back();
+print_vector(v);            //Output: 5 4 3 1 2
 
 
 //////////////////////////////////////////////////////////////////////////////////
