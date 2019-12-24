@@ -33,7 +33,6 @@ struct comp
 
 void print_set(set<myData,comp> &s)
 {
-
     for(auto itr = s.begin(); itr!=s.end();itr++)
         cout<<(*itr).value<<" ";
     cout<<endl;
