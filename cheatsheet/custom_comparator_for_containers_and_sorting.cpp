@@ -1,5 +1,3 @@
-//Custom Comparator for stl containers and sorting:
-
 //Comparator is a function that is used to compare two value.
 //STL sorted container have a comparator less<> by default which sorts them is ascending order.
 //greater<> can be used explicitly to sort a container is descending order.
@@ -9,9 +7,14 @@
 
 //sort() function also require custom comparator for sorting of user defined data types.
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include<bits/stdc++.h>
 using namespace std;
+
+
+
+//1. Comparator for the data type using member operator:
 
 struct myData
 {
@@ -21,7 +24,17 @@ struct myData
         this->value=value;
     }
 
+    //member operator as comparator
+    bool operator<(const myData &b)
+    const{
+        return this->value < b.value;
+    }
 };
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+//2. Function object as comparison function:
 
 //Custom Comparator
 struct comp
@@ -31,7 +44,17 @@ struct comp
     }
 };
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void print_set(set<myData,comp> &s)
+{
+    for(auto itr = s.begin(); itr!=s.end();itr++)
+        cout<<(*itr).value<<" ";
+    cout<<endl;
+}
+
+void print_set(set<myData> &s)
 {
     for(auto itr = s.begin(); itr!=s.end();itr++)
         cout<<(*itr).value<<" ";
@@ -45,9 +68,16 @@ void print_vector(vector<myData> &v)
     cout<<endl;
 }
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 int main()
 {
-    set<myData,comp> s;
+    //1. uses member operator:
+    set<myData> s;
+
+    //2. uses custom comparator as function object:
+    //set<myData,comp> s;
 
     s.insert(myData(10));
     s.insert(myData(50));
@@ -64,7 +94,11 @@ int main()
     v.push_back(myData(20));
     v.push_back(myData(40));
 
-    sort(v.begin(),v.end(),comp());
+    //1. uses member operator:
+    sort(v.begin(),v.end());
+
+    //2. uses custom comparator as function object:
+    //sort(v.begin(),v.end(),comp());
 
     print_vector(v);        //Output: 10 20 30 40 50
 }
