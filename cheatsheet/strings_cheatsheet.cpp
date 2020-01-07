@@ -88,8 +88,9 @@ isdigit(char);
 
 
 //11. find() in a string:
-string s="ancd1234";
+string s="ancd1234a";
 cout<<s.find('a');          //returns index of first occurence of 'a'
+cout<<s.rfind('a');         //returns index of last occurence
 
 if(s.find('z')== -1)        //returns -1 if not found
     cout<<"not found";
