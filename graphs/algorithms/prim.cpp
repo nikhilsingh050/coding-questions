@@ -58,7 +58,7 @@ int main()
 
     for(int i=0;i<edges.size();i++)
     {
-        adj[edges[i][0]].push_back(make_pair(edges[i][1],wt[i]));
+        adj[edges[i][0]].push_back({edges[i][1],wt[i]});
     }
 
     prim(adj,V);
