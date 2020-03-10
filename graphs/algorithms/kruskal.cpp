@@ -65,6 +65,7 @@ struct DisjointSets
         {
             parent[y]=x;
             rnk[x]++;
+        }
     }
 };
 
