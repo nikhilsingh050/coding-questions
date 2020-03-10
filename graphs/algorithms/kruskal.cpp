@@ -62,7 +62,9 @@ struct DisjointSets
             parent[x]=y;
 
         if(rnk[x] == rnk[y])
-            rnk[y]++;
+        {
+            parent[y]=x;
+            rnk[x]++;
     }
 };
 
